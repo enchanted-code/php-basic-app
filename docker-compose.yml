@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  php:
+    build: .
+    ports:
+      - "127.0.0.1:8000:80"
+    environment:
+      - "DB_SERVER=db"
+      - "DB_TYPE=mysql"
+      - "DB_DATABASE=lectures"
+      - "DB_USERNAME=user"
+      - "DB_PASSWORD=ChangeMePlease"
+    volumes:
+      - "./www:/var/www:ro"
+
+  db:
+    image: mariadb:10.8
+    environment:
+      MYSQL_ROOT_PASSWORD: ChangeMePleaseRoot
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ChangeMePlease
+      MYSQL_DATABASE: lectures
+    volumes:
+      - "db_data:/var/lib/mysql"
+
+  # phpmyadmin:
+  #   image: phpmyadmin:5-apache
+  #   ports:
+  #     - "127.0.0.1:8001:80"
+  #   environment:
+  #     - PMA_HOST=db
+
+volumes:
+  db_data:
