@@ -22,6 +22,26 @@ function create_tables($conn) {
         PRIMARY KEY(id)
     )';
     $conn->exec($sql);
+
+    $sql = 'CREATE TABLE IF NOT EXISTS user(
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(20) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        PRIMARY KEY(id)
+    )';
+    $conn->exec($sql);
+}
+
+function create_user($conn, $username, $password) {
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = $conn->prepare("INSERT INTO user (username, password) VALUES (?, ?)");
+    $sql->execute([$username, $password]);
+}
+
+function count_users($conn) {
+    $sql = 'SELECT COUNT(id) FROM user';
+    return $conn->query($sql)->fetch()[0];
 }
 
 function get_all_lecture_content($conn) {
