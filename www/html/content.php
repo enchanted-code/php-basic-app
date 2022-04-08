@@ -2,6 +2,8 @@
   session_start();
   require_once "../resources/functions.php";
   require_once "../resources/db.php";
+
+  ensure_authenticated();
 ?>
 <!DOCTYPE html>
 <html lang="en">

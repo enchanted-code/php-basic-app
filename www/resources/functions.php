@@ -21,3 +21,10 @@ function user_login($username) {
 function user_logout() {
     $_SESSION["username"] = null;
 }
+
+function ensure_authenticated() {
+    if (!user_authenticated()) {
+        header('Location: /user/login.php');
+        exit();
+    }
+}
