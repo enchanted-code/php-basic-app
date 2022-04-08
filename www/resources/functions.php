@@ -6,3 +6,18 @@ function template($name, $atts = []) {
         include $source;
     }
 }
+
+function user_authenticated() {
+    if (isset($_SESSION["username"])) {
+        return true;
+    }
+    return false;
+}
+
+function user_login($username) {
+    $_SESSION["username"] = $username;
+}
+
+function user_logout() {
+    $_SESSION["username"] = null;
+}

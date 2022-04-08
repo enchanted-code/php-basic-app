@@ -2,6 +2,15 @@
   <h1><?= $title ?></h1>
   <nav>
     <a href="/index.php">Home</a>
+    <?php
+    if ($authenticated) {
+      echo '<a href="/user/logout.php">Logout</a>';
+    }
+    else {
+      echo '<a href="/user/login.php">Login</a>';
+    }
+    ?>
+
     <a href="/connection-test.php">Connection Test</a>
     <a href="/content.php">Content</a>
   </nav>

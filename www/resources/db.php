@@ -44,6 +44,16 @@ function count_users($conn) {
     return $conn->query($sql)->fetch()[0];
 }
 
+function get_user_password($conn, $username) {
+    $sql = $conn->prepare('SELECT password FROM user WHERE username=?');
+    $sql->execute([$username]);
+    $row = $sql->fetch();
+    if ($row == false) {
+        return null;
+    }
+    return $row[0];
+}
+
 function get_all_lecture_content($conn) {
     $sql = 'SELECT author, content FROM lecture_content';
     return $conn->query($sql);
