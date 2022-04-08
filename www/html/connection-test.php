@@ -6,7 +6,7 @@
 <html lang="en">
   <?php template("head", array("title"=>"Connection Test")); ?>
 <body>
-  <?php template("header", array("title"=>"Connection Test")); ?>
+  <?php template("header", array("title"=>"Connection Test", "authenticated"=>user_authenticated())); ?>
   <main>
   <?php
     try {

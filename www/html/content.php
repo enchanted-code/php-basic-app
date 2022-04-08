@@ -6,7 +6,7 @@
 <html lang="en">
   <?php template("head", array("title"=>"Lecture Content")); ?>
 <body>
-  <?php template("header", array("title"=>"Lecture Content")); ?>
+  <?php template("header", array("title"=>"Lecture Content", "authenticated"=>user_authenticated())); ?>
   <main>
     <form action="post-content.php" method="post">
       <h2>Add Content</h2>
