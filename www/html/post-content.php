@@ -4,6 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     exit();
 }
 
+session_start();
 require_once "../resources/db.php";
 
 $author = $_POST['author'];
